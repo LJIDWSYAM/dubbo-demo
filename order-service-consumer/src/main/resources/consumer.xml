@@ -12,7 +12,7 @@
 
     <dubbo:application name="order-service-consumer"></dubbo:application>
 
-    <dubbo:registry address="zookeeper://192.168.0.120:2181"></dubbo:registry>
+    <dubbo:registry address="zookeeper://120.27.251.36:2181"></dubbo:registry>
 
     <!--  配置本地存根-->
 
@@ -25,14 +25,19 @@
     <!-- retries="":重试次数，不包含第一次调用，0代表不重试-->
     <!-- 幂等（设置重试次数）【查询、删除、修改】、非幂等（不能设置重试次数）【新增】 -->
     <dubbo:reference interface="com.atguigu.gmall.service.UserService"
-                     id="userService" timeout="5000" retries="3" version="*">
+                     id="userService" timeout="1000" version="*">
         <!-- <dubbo:method name="getUserAddressList" timeout="1000"></dubbo:method> -->
     </dubbo:reference>
 
-    <!-- 配置当前消费者的统一规则：所有的服务都不检查 -->
-    <dubbo:consumer check="false" timeout="5000"></dubbo:consumer>
 
-    <dubbo:monitor protocol="registry"></dubbo:monitor>
+    <!-- 配置当前消费者的统一规则：所有的服务都不检查 -->
+    <!--<dubbo:consumer check="false" timeout="5000"></dubbo:consumer>-->
+    <dubbo:consumer timeout="5000"></dubbo:consumer>
+
+
+    <!--配置监控中心两种配置均可-->
+    <!--<dubbo:monitor protocol="registry"></dubbo:monitor>-->
     <!-- <dubbo:monitor address="127.0.0.1:7070"></dubbo:monitor> -->
+    <dubbo:monitor protocol="registry"></dubbo:monitor>
 
 </beans>

@@ -26,8 +26,7 @@ public class OrderServiceImpl implements OrderService {
 
 	public List<UserAddress> initOrder(String userId) {
 		// TODO Auto-generated method stub
-		System.out.println("鐢ㄦ埛id锛�"+userId);
-		//1銆佹煡璇㈢敤鎴风殑鏀惰揣鍦板潃
+		System.out.println("用户id："+userId);
 		List<UserAddress> addressList = userService.getUserAddressList(userId);
 		for (UserAddress userAddress : addressList) {
 			System.out.println(userAddress.getUserAddress());
